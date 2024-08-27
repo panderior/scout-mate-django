@@ -225,7 +225,8 @@ let globalFiles = [];
         .then(response => response.json())
         .then(data => {
             console.log('Success:', data);
-            alert(data["data"]["session_id"]);
+            var session_id = data["data"]["session_id"]
+            window.location.href = '/llm/scout/';
         })
         .catch(error => {
             console.error('Error:', error);

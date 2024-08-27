@@ -11,23 +11,11 @@ from authenticate.serializers import UserSessionSerializer
 import json
 
 
-def hello(request):
-    return render(request, "home.html")
-
-def scout(request):
-    return render(request, "scout.html")
-
-def upload_view(request):
-    if request.method == 'POST':
-        files = request.FILES.getlist('files')
-        for file in files:
-            with open(os.path.join(BASE_DIR, 'users_data', file.name), 'wb+') as destination:
-                for chunk in file.chunks():
-                    destination.write(chunk)
-        return JsonResponse({'success': True})
-    return render(request, 'home.html')
-
 class ScoutDataPersistingAPI(generics.GenericAPIView):
+    @api_view(['GET'])
+    def get_home_page(request, *args, **kwargs):
+        return render(request, 'home.html')
+
     @api_view(['POST'])
     def scout_data_upload(request, *args, **kwargs):
         result = {"success": True, "data": {}, "detail": {} }
@@ -87,7 +75,10 @@ class ScoutDataPersistingAPI(generics.GenericAPIView):
             return Response(result, status=status.HTTP_400_BAD_REQUEST) 
 
 
-
+class ScoutResultsAPI(generics.GenericAPIView):
+    @api_view(['GET'])
+    def get_scout_page(request, *args, **kwargs):
+        return render(request, 'chat.html')
 
 
 
