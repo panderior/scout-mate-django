@@ -1,11 +1,9 @@
-body { margin-top: 20px; }
-
 .chat-messages {
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
     background-color: #f8f9fa;
-    height: 800px;
+    height: 400px;
 }
 
 .flex-grow-0.py-3.px-4.border-top {

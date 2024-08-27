@@ -1,41 +1,63 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}
     Scouting Result
 {% endblock %}
 
 {% block content %}
-    <div>
-        <div>
+    <div class="flex-fill d-flex">
+        <!-- <div> -->
             <!-- add weights and home button-->
-             <div>
+             <!-- <div> -->
                 <!-- add weights display div -->
-                <div>
+                <!-- <div>
 
                 </div>
 
                 <button class="btn btn-outline-primary" type="submit">Back to Home</button>
 
-             </div>
+             </div> -->
 
             <!-- add table and delete button-->
-            <div>
+            <!-- <div> -->
                 <!-- add table -->
 
                 
-                <button class="btn btn-sm btn-danger" type="submit"> Delete </button> 
-            </div>
+                <!-- <button class="btn btn-sm btn-danger" type="submit"> Delete </button> 
+            </div> -->
 
 
-        </div>
+        <!-- </div> -->
         
         <!-- add chat -->
-        <div>
+        <!-- <div class="col-5"> -->
+        <div class="flex-fill d-flex">
+            <!-- <div class="position-relative"> -->
+            <div class="flex-fill d-flex flex-column">
+                <div class="chat-messages p-4 h-90" id="chat-box"></div>
 
+                <!-- user input -->
+                <div class="flex-grow-0 py-3 px-4 border-top">
+                    <div class="input-group">
+                        <input type="text" id="user-input" class="form-control" placeholder="Type your message">
+                        <button class="btn btn-primary" type="submit" id="send-button">Send</button>
+                    </div>
+                </div>
+            </div>
         </div>
         
     </div>
 
     
+
+{% endblock %}
+
+{% block styles %}
+{% endblock %}
+
+{% block scripts %}
+    <link rel="stylesheet" href="{% static 'css/chat.css' %}">
+    <script src="{% static 'js/chat.js' %}"></script>
 
 {% endblock %}
