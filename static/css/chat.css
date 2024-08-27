@@ -1,0 +1,75 @@
+body { margin-top: 20px; }
+
+.chat-messages {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    background-color: #f8f9fa;
+    height: 800px;
+}
+
+.flex-grow-0.py-3.px-4.border-top {
+    background-color: #f8f9fa;
+}
+
+.chat-message-left,
+.chat-message-right {
+    display: flex;
+    flex-shrink: 0;
+    width: 90%;
+    max-width: 90%;
+    word-wrap: break-word;
+    height: auto;
+}
+
+.chat-message-left {
+    margin-right: auto;
+}
+
+.chat-message-right {
+    flex-direction: row-reverse;
+    margin-left: auto;
+}
+
+.chat-message-left .flex-shrink-1 {
+    background-color: #d1e7dd;
+    color: black;
+}
+
+.chat-message-right .flex-shrink-1 {
+    background-color: white; 
+    color: black;
+}
+
+.chat-message-left .flex-shrink-1,
+.chat-message-right .flex-shrink-1 {
+    padding: 10px;
+    border-radius: 10px;
+    width: 100%; 
+    word-wrap: break-word;
+    overflow-wrap: break-word; 
+    flex-shrink: 1;
+    box-sizing: border-box;
+}
+
+.py-3 {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}
+
+.px-4 {
+    padding-right: 1.5rem !important;
+    padding-left: 1.5rem !important;
+}
+
+.flex-grow-0 {
+    flex-grow: 0 !important;
+}
+
+.border-top {
+    border-top: 1px solid #dee2e6 !important;
+}
+
+.input-group{
+    background-color: #f8f9fa;
+}
