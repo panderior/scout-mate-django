@@ -9,13 +9,14 @@ from .serializers import JobRequirementSerializer, MatrixScoresSerializer, Matri
 from .constants import DOMAIN, EDUCATION, SKILL
 from authenticate.serializers import UserSessionSerializer
 import json
-
+from .solar import ChatWithSolar
 
 def hello(request):
     return render(request, "home.html")
 
 def scout(request):
     return render(request, "scout.html")
+
 
 def upload_view(request):
     if request.method == 'POST':
@@ -86,8 +87,13 @@ class ScoutDataPersistingAPI(generics.GenericAPIView):
             result["success"] = False
             return Response(result, status=status.HTTP_400_BAD_REQUEST) 
 
+def chat_response(request):
+    if request.method == "POST":
+        data = json.loads(request.body)
+        user_message = data.get("message", "")
 
+        answer = ChatWithSolar(user_message)
 
+        return JsonResponse({"response": answer})
 
-
-
+    return JsonResponse({"error": "Invalid request"}, status=400)
