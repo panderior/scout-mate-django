@@ -1,7 +1,5 @@
 import os
 from dotenv import load_dotenv
-from .models import UploadedFiles
-
 from langchain_upstage import ChatUpstage
 from langchain_upstage import UpstageEmbeddings
 from langchain_core.messages import HumanMessage, SystemMessage
@@ -29,7 +27,7 @@ def ChatWithSolar(question):
     # uploaded_files = UploadedFiles.objects.all()
     
     file_list = [
-        '/workspace/BALAB_Hyeonji/Graduate/202408_LLM_Solar_Hackerthon/scout-mate-django/static/CV_정현지.pdf'
+        '/home/ubuntu/Documents/Projects/Lab_work/scout_mate/static/LG_CNS_정현지.pdf'
     ]
     
     # load data
