@@ -6,38 +6,81 @@
 {% endblock %}
 
 {% block content %}
-    <div class="flex-fill d-flex">
-        <!-- <div> -->
-            <!-- add weights and home button-->
-             <!-- <div> -->
-                <!-- add weights display div -->
-                <!-- <div>
-
+    <div class="container-fluid d-flex justify-content-evenly p-3 w-100">
+        <!-- left col-->
+        <div class="d-flex flex-column w-60 align-items-center justify-content-evenly" style="padding-right: 10px;">
+            <form class="p-3 w-100">
+                <h4 class="text-center" style="color:#1374F2; padding-bottom: 40px;">Metrics Weights</h4>
+                <div class="d-flex justify-content-between">
+                    <div class="card me-2" style="flex: 1; background-color: #ffebcd; border: none;">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Experience</h5>
+                            <input class="form-control" type="text" value="{{metrics_weights.experiance_weight}}" readonly style="text-align: center;">
+                        </div>
+                    </div>
+                    <div class="card me-2" style="flex: 1; background-color: #f5f5dc; border: none;">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Relevance</h5>
+                            <input class="form-control" type="text" value="{{metrics_weights.relevance_weight}}" readonly style="text-align: center;">
+                        </div>
+                    </div>
+                    <div class="card me-2" style="flex: 1; background-color: #e6e6fa; border: none;">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Education</h5>
+                            <input class="form-control" type="text" value="{{metrics_weights.education_weight}}" readonly style="text-align: center;">
+                        </div>
+                    </div>
+                    <div class="card me-2" style="flex: 1; background-color: #ffe4e1; border: none;">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Skills</h5>
+                            <input class="form-control" type="text" value="{{metrics_weights.skill_weight}}" readonly style="text-align: center;">
+                        </div>
+                    </div>
                 </div>
+            </form>
 
-                <button class="btn btn-outline-primary" type="submit">Back to Home</button>
+            <form class="p-3 w-100">
+                <h4 class="text-center" style="color:#1374F2; padding-bottom: 40px;">Fitness Score</h4>
+                <div class="table-responsive">
+                    <table class="table text-center">
+                        <thead>
+                            <tr>
+                                <th scope="col">File Name</th>
+                                <th scope="col">Candidate Name</th>
+                                <th scope="col">Experience</th>
+                                <th scope="col">Relevance</th>
+                                <th scope="col">Education</th>
+                                <th scope="col">Skills</th>
+                                <th scope="col">Overall</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for cand_score in applicant_scores %}
+                                <tr>
+                                    <td class="table text-left">{{cand_score.uploaded_file.file_name}}</td>
+                                    <td>{{cand_score.candidate_name}}</td>
+                                    <td>{{cand_score.experiance_score}}</td>
+                                    <td>{{cand_score.relevance_score}}</td>
+                                    <td>{{cand_score.education_score}}</td>
+                                    <td>{{cand_score.skill_score}}</td>
+                                    <td>{{cand_score.overall_score}}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </form>
+            <div class="text-center">
+                <button class="btn btn-outline-primary" type="submit" id="home-button">Back to Home</button>
+            </div>
+        </div>
 
-             </div> -->
+        <!-- right col-->
+        <div class="d-flex w-50 justify-content-evenly align-items-center" style="max-width:500px;">
+            <div class="w-100">
+                <div class="chat-messages p-4" id="chat-box"></div>
 
-            <!-- add table and delete button-->
-            <!-- <div> -->
-                <!-- add table -->
-
-                
-                <!-- <button class="btn btn-sm btn-danger" type="submit"> Delete </button> 
-            </div> -->
-
-
-        <!-- </div> -->
-        
-        <!-- add chat -->
-        <!-- <div class="col-5"> -->
-        <div class="flex-fill d-flex">
-            <!-- <div class="position-relative"> -->
-            <div class="flex-fill d-flex flex-column">
-                <div class="chat-messages p-4 h-90" id="chat-box"></div>
-
-                <!-- user input -->
+                <!-- User Input -->
                 <div class="flex-grow-0 py-3 px-4 border-top">
                     <div class="input-group">
                         <input type="text" id="user-input" class="form-control" placeholder="Type your message">
@@ -46,10 +89,7 @@
                 </div>
             </div>
         </div>
-        
     </div>
-
-    
 
 {% endblock %}
 
@@ -57,7 +97,12 @@
 {% endblock %}
 
 {% block scripts %}
+    <meta name="csrf-token" content="{{ csrf_token }}">
     <link rel="stylesheet" href="{% static 'css/chat.css' %}">
     <script src="{% static 'js/chat.js' %}"></script>
+    <script>
+        const avatarImageUrl = "{% static 'image/Scout Mates.png' %}";
+        window.avatarImageUrl = avatarImageUrl;
+    </script>
 
 {% endblock %}

@@ -7,4 +7,5 @@ class UploadedFileSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = UploadedFileModel
-        fields = ('id', 'session','file_path')
+        fields = ('id', 'session','file_path', 'file_name')
+        read_only_fields = ('file_name',)

@@ -15,7 +15,8 @@ class MatrixScoresSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = MatrixScoresModel
-        fields = ('id', 'uploaded_file','experiance_score', 'relevance_score', 'education_score', 'skill_score', 'overall_score')
+        fields = ('id', 'uploaded_file', 'candidate_name','experiance_score', 'relevance_score', 'education_score', 'skill_score', 'overall_score')
+        read_only_fields = ('overall_score',)
 
 class JobRequirementSerializer(serializers.ModelSerializer):
     session = UserSessionSerializer(required=False)

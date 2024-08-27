@@ -107,41 +107,6 @@ let globalFiles = [];
         }
     }
 
-    // Based on: https://flaviocopes.com/how-to-upload-files-fetch/
-    
-    // const imageUpload = dataRefs => {
-
-    //     // Multiple source routes, so double check validity
-    //     if (!dataRefs.files || !dataRefs.input) return;
-
-    //     const url = dataRefs.input.getAttribute('data-post-url');
-    //     if (!url) return;
-
-    //     const name = dataRefs.input.getAttribute('data-post-name');
-    //     if (!name) return;
-
-    //     const formData = new FormData();
-    //     formData.append(name, dataRefs.files);
-
-    //     fetch(url, {
-    //     method: 'POST',
-    //     body: formData
-    //     })
-    //     .then(response => response.json())
-    //     .then(data => {
-    //     console.log('posted: ', data);
-    //     if (data.success === true) {
-    //         previewFiles(dataRefs);
-    //     } else {
-    //         console.log('URL: ', url, '  name: ', name)
-    //     }
-    //     })
-    //     .catch(error => {
-    //     console.error('errored: ', error);
-    //     });
-    // }
-
-
     // Handle both selected and dropped files
     const handleFiles = dataRefs => {
 
@@ -226,7 +191,7 @@ let globalFiles = [];
         .then(data => {
             console.log('Success:', data);
             var session_id = data["data"]["session_id"]
-            window.location.href = '/llm/scout/';
+            window.location.href = '/llm/scout/' + session_id + "/";
         })
         .catch(error => {
             console.error('Error:', error);
