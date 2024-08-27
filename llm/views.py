@@ -25,6 +25,7 @@ from langchain_upstage import ChatUpstage
 from langchain_upstage import UpstageEmbeddings 
 import subprocess
 from langchain.vectorstores import Chroma
+from langchain_core.messages import HumanMessage, SystemMessage
 
 load_dotenv()
 api_key = os.environ.get("SOLAR_API_KEY")
@@ -60,8 +61,8 @@ class ScoutDataPersistingAPI(generics.GenericAPIView):
 
     @api_view(['POST'])
     def scout_data_upload(request, *args, **kwargs):
-        result = {"success": True, "data": {}, "detail": {} }
-        try:
+            result = {"success": True, "data": {}, "detail": {} }
+        # try:
             # create a session instance
             new_session_serializer = UserSessionSerializer(data={"token": generate_unique_token()})
             new_session_serializer.is_valid(raise_exception=True)
@@ -144,10 +145,10 @@ class ScoutDataPersistingAPI(generics.GenericAPIView):
             # send response data with the session id
             result["data"]["session_id"] = new_session_instance.id
             return Response(result, status=status.HTTP_200_OK) 
-        except Exception as exp:
-            print(exp)
-            result["success"] = False
-            return Response(result, status=status.HTTP_400_BAD_REQUEST) 
+        # except Exception as exp:
+        #     print(exp)
+        #     result["success"] = False
+        #     return Response(result, status=status.HTTP_400_BAD_REQUEST) 
 
 class ScoutResultsAPI(generics.GenericAPIView):
     @api_view(['GET'])
@@ -175,7 +176,7 @@ class ScoutResultsAPI(generics.GenericAPIView):
     def scouty_chat(request, *args, **kwargs):
         try:
             vectordb = Chroma.from_texts(
-                texts=[" "],
+                texts=["empty", "filling"],
                 embedding=solar_embedding,
                 persist_directory=persist_directory
             )
@@ -187,7 +188,7 @@ class ScoutResultsAPI(generics.GenericAPIView):
             answer = scouty_chat_llm(vectordb, metrix_result, user_message)
             print(answer)
 
-            return JsonResponse({"response": answer})
+            return JsonResponse({"response": answer['answer']})
         except Exception as exp:
             print(exp)
 

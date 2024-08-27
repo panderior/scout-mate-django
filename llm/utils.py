@@ -18,6 +18,7 @@ from langchain.chains import ConversationalRetrievalChain
 from langchain.memory import ConversationBufferMemory
 from tqdm import tqdm
 from dotenv import load_dotenv
+from langchain_core.messages import HumanMessage, SystemMessage
 
 load_dotenv()
 api_key = os.environ.get("SOLAR_API_KEY")
