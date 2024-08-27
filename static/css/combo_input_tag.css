@@ -1,0 +1,12 @@
+.tag {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 20px;
+}
+.tag .remove-tag {
+    margin-left: 10px;
+    cursor: pointer;
+}

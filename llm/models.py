@@ -8,19 +8,19 @@ from django.utils import timezone
 
 class MatrixWeightsModel(models.Model):
     session = models.ForeignKey(UserSessionModel, on_delete=models.CASCADE)
-    experiance_weight = models.FloatField(default=0.25, validators=[MinValueValidator(0), MaxValueValidator(1)])
-    relevance_weight = models.FloatField(default=0.25, validators=[MinValueValidator(0), MaxValueValidator(1)])
-    education_weight = models.FloatField(default=0.25, validators=[MinValueValidator(0), MaxValueValidator(1)])
-    skill_weight = models.FloatField(default=0.25, validators=[MinValueValidator(0), MaxValueValidator(1)])
+    experiance_weight = models.FloatField(default=0.25, validators=[MinValueValidator(0.0), MaxValueValidator(1.0)])
+    relevance_weight = models.FloatField(default=0.25, validators=[MinValueValidator(0.0), MaxValueValidator(1.0)])
+    education_weight = models.FloatField(default=0.25, validators=[MinValueValidator(0.0), MaxValueValidator(1.0)])
+    skill_weight = models.FloatField(default=0.25, validators=[MinValueValidator(0.0), MaxValueValidator(1.0)])
     created_at = models.DateTimeField(default=timezone.now)
 
 class MatrixScoresModel(models.Model):
     uploaded_file = models.ForeignKey(UploadedFileModel, on_delete=models.CASCADE)
-    experiance_score = models.FloatField(validators=[MinValueValidator(0), MaxValueValidator(5)])
-    relevance_score = models.FloatField(validators=[MinValueValidator(0), MaxValueValidator(5)])
-    education_score = models.FloatField(validators=[MinValueValidator(0), MaxValueValidator(5)])
-    skill_score = models.FloatField(validators=[MinValueValidator(0), MaxValueValidator(5)])
-    overall_score = models.FloatField(validators=[MinValueValidator(0), MaxValueValidator(5)])
+    experiance_score = models.FloatField(validators=[MinValueValidator(0.0), MaxValueValidator(5.0)])
+    relevance_score = models.FloatField(validators=[MinValueValidator(0.0), MaxValueValidator(5.0)])
+    education_score = models.FloatField(validators=[MinValueValidator(0.0), MaxValueValidator(5.0)])
+    skill_score = models.FloatField(validators=[MinValueValidator(0.0), MaxValueValidator(5.0)])
+    overall_score = models.FloatField(validators=[MinValueValidator(0.0), MaxValueValidator(5.0)])
     created_at = models.DateTimeField(default=timezone.now)
 
 class JobRequirementModel(models.Model):
