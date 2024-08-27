@@ -27,7 +27,7 @@ def ChatWithSolar(question):
     # uploaded_files = UploadedFiles.objects.all()
     
     file_list = [
-        '/home/ubuntu/Documents/Projects/Lab_work/scout_mate/static/LG_CNS_정현지.pdf'
+        '/Users/hyeonji/Downloads/scout mate/scout-mate-django/static/CV_정현지.pdf'
     ]
     
     # load data
