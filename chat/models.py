@@ -13,4 +13,3 @@ class ChatMessageModel(models.Model):
     sender_type = models.CharField(max_length=100, choices=chat_user_types_list)
     reciever_type = models.CharField(max_length=100, choices=chat_user_types_list)
     created_at = models.DateTimeField(default=timezone.now)
-

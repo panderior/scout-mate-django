@@ -7,4 +7,3 @@ class UploadedFileModel(models.Model):
     session = models.ForeignKey(UserSessionModel, on_delete=models.CASCADE)
     file_path = models.CharField(max_length=100)
     uploaded_at = models.DateTimeField(default=timezone.now)
-
