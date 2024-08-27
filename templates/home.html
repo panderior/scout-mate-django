@@ -41,29 +41,39 @@
 
 
         <div class="d-flex flex-row w-100 align-items-center justify-content-evenly">
-            <form class="p-3 w-40">
+            <form class="p-3 w-40 col-4">
+                {% csrf_token %}
                 <H5 class="text-center">Job Requirements</H5>
                 <div class="mb-3 row">
                     <label for="education_req_input" class="col-sm-4 col-form-label">Education Level</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="education_req_input">
+                        <select id="education_req_input" class="form-select">
+                            <option value="" disabled selected>Select option</option>
+                            <option value="highschool">HighSchool</option>
+                            <option value="bsc">BSc</option>
+                            <option value="msc">MSc</option>
+                            <option value="phd">PhD</option>
+                        </select>
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="domains_list_input" class="col-sm-4 col-form-label">Job Domains</label>
                     <div class="col-sm-8">
-                    <input type="text" class="form-control" id="domains_list_input">
+                        <input type="text" id="domains_list_input" class="form-control" placeholder="Type something and press Enter">
+                        <div id="domains_tagsContainer"></div>
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="skills_list_input" class="col-sm-4 col-form-label">Required Skills</label>
                     <div class="col-sm-8">
-                    <input type="text" class="form-control" id="skills_list_input">
+                        <input type="text" id="skills_list_input" class="form-control" placeholder="Type something and press Enter">
+                        <div id="skills_tagsContainer"></div>
                     </div>
                 </div>
             </form>
 
-            <form class="p-3 w-40">
+            <form class="p-3 w-40  col-4">
+                {% csrf_token %}
                 <H5 class="text-center">Metrix Weights</H5>
                 <div class="mb-3 row">
                     <label for="experiance_weight_input" class="col-sm-4 col-form-label">Experiance</label>
@@ -93,7 +103,7 @@
         </div>
     </div>
 
-    <button type="button" class="btn btn-lg btn-primary">Submit</button>        
+    <button id="scout_query_submit" type="button" class="btn btn-lg btn-primary">Submit</button>        
 
 
 
@@ -102,67 +112,16 @@
 <!-- add style code -->
 {% block styles %}
 
-    :root {
-    --colorPrimaryNormal: #00b3bb;
-    --colorPrimaryDark: #00979f;
-    --colorPrimaryGlare: #00cdd7;
-    --colorPrimaryHalf: #80d9dd;
-    --colorPrimaryQuarter: #bfecee;
-    --colorPrimaryEighth: #dff5f7;
-    --colorPrimaryPale: #f3f5f7;
-    --colorPrimarySeparator: #f3f5f7;
-    --colorPrimaryOutline: #dff5f7;
-    --colorButtonNormal: #00b3bb;
-    --colorButtonHover: #00cdd7;
-    --colorLinkNormal: #00979f;
-    --colorLinkHover: #00cdd7;
-    }
-
-
-    .upload_dropZone {
-        color: #0f3c4b;
-        width: 600px;
-        background-color: var(--colorPrimaryPale, #c8dadf);
-        outline: 2px dashed var(--colorPrimaryHalf, #c1ddef);
-        outline-offset: -12px;
-        transition:
-            outline-offset 0.2s ease-out,
-            outline-color 0.3s ease-in-out,
-            background-color 0.2s ease-out;
-    }
-
-    .upload_dropZone.highlight {
-    outline-offset: -4px;
-    outline-color: var(--colorPrimaryNormal, #0576bd);
-    background-color: var(--colorPrimaryEighth, #c8dadf);
-    }
-
-    .upload_svg {
-    fill: var(--colorPrimaryNormal, #0576bd);
-    }
-
-    .btn-upload {
-    color: #fff;
-    background-color: var(--colorPrimaryNormal);
-    }
-
-    .btn-upload:hover,
-    .btn-upload:focus {
-    color: #fff;
-    background-color: var(--colorPrimaryGlare);
-    }
-
-    .upload_img {
-    width: calc(33.333% - (2rem / 3));
-    object-fit: contain;
-    }
-
-
+   
+    
 {% endblock %}
 
 
 <!-- add js script code -->
 {% block scripts %}
+    <link rel="stylesheet" href="{% static 'css/uploader_input.css' %}">
+    <link rel="stylesheet" href="{% static 'css/combo_input_tag.css' %}">
     <script src="{% static 'js/uploader_component.js' %}"></script>
+    <script src="{% static 'js/combo_tag_input.js' %}"></script>
 
 {% endblock %}
