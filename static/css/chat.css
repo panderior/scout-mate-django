@@ -3,7 +3,11 @@
     flex-direction: column;
     overflow-y: scroll;
     background-color: #f8f9fa;
-    height: 400px;
+    height: 600px;
+}
+
+.container-fluid {
+    height: 100%;
 }
 
 .flex-grow-0.py-3.px-4.border-top {
